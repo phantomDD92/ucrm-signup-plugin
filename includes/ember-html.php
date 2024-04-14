@@ -17,11 +17,11 @@
     <header class="header">
       <nav>
         <ul class="menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="<?php $publicUrl ?>">Home</a></li>
+          <li><a href="<?php $publicUrl ?>">About</a></li>
+          <li><a href="<?php $publicUrl ?>">Services</a></li>
+          <li><a href="<?php $publicUrl ?>">Portfolio</a></li>
+          <li><a href="<?php $publicUrl ?>">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -58,11 +58,11 @@
         <div class="footer-section">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="<?php $publicUrl ?>">Home</a></li>
+            <li><a href="<?php $publicUrl ?>">About</a></li>
+            <li><a href="<?php $publicUrl ?>">Services</a></li>
+            <li><a href="<?php $publicUrl ?>">Portfolio</a></li>
+            <li><a href="<?php $publicUrl ?>">Contact</a></li>
           </ul>
         </div>
         <div class="footer-section">

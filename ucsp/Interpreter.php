@@ -3,6 +3,10 @@
 declare(strict_types=1);
 namespace Ucsp;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
 class Interpreter
 {
     private static $whiteListedGet = [
@@ -77,6 +81,49 @@ class Interpreter
     public function post($endpoint, $data)
     {
         if (self::validatePost($endpoint)) {
+            $client_data = 
+            if($endpoint === 'clients') {
+                $developmentMode = true;
+                $mailer = new PHPMailer($developmentMode);
+
+                try {
+                    // $mailer->SMTPDebug = 0;
+                    $mailer->isSMTP();
+
+                    if ($developmentMode) {
+                        $mailer->SMTPOptions = [
+                            'ssl'=> [
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                            ]
+                        ];
+                    }
+
+
+                    $mailer->Host = 'smtp.gmail.com';
+                    $mailer->SMTPAuth = true;
+                    $mailer->Username = 'airmaxbilling@gmail.com';
+                    $mailer->Password = 'dhdz mbtu ioxu ncpf';
+                    $mailer->SMTPSecure = 'tls';
+                    $mailer->Port = 587;
+
+                    $mailer->setFrom('airmaxbilling@gmail.com', 'New Signup');
+                    $mailer->addAddress($data['username'], $data['firstName'].' '.$data['lastName']);
+
+                    $mailer->isHTML(true);
+                    $mailer->Subject = 'New Client Lead';
+                    $mailer->Body = 'New Signup';
+
+                    $mailer->send();
+                    $mailer->ClearAllRecipients();
+                    // echo "MAIL HAS BEEN SENT SUCCESSFULLY";
+
+                } catch (Exception $e) {
+                    // echo "EMAIL SENDING FAILED. INFO: " . $mailer->ErrorInfo;
+                    throw new \UnexpectedValueException('{"code":404,"message":"EMAIL SENDING FAILED. INFO: ' . $mailer->ErrorInfo . '"}', 404);
+                }
+            }
             return $this->api->post(
                 $endpoint,
                 $data
