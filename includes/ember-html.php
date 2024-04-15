@@ -12,25 +12,26 @@
       <?php $publicUrl = str_replace('.php', '/', $options->pluginPublicUrl); ?>
       <link rel="stylesheet" type="text/css" href="<?php echo $publicUrl . 'vendor.css' ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo $publicUrl . 'ucrm-client-signup-form.css' ?>">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
   </head>
   <body>
     <header class="header">
       <nav>
         <ul class="menu">
-          <li><a href="<?php $publicUrl ?>">Home</a></li>
-          <li><a href="<?php $publicUrl ?>">About</a></li>
-          <li><a href="<?php $publicUrl ?>">Services</a></li>
-          <li><a href="<?php $publicUrl ?>">Portfolio</a></li>
-          <li><a href="<?php $publicUrl ?>">Contact</a></li>
+          <li><a href="https://www.airmaxcm.com/wireless/index.php">Home</a></li>
+          <li><a href="https://www.airmaxcm.com/wireless/index.php/about">About</a></li>
+          <li><a href="https://www.airmaxcm.com/wireless/index.php/view-plans">View Packages</a></li>
+          <li><a href="https://www.airmaxcm.com/wireless/index.php/support-tools/terms-conditions">TERMS and CONDITIONS</a></li>
         </ul>
       </nav>
     </header>
 
-    <div class="main-panel">
-      <?php if (! empty($config['LOGO_URL'])) { ?>
-        <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
-      <?php } ?>
+    <?php if (! empty($config['LOGO_URL'])) { ?>
+      <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
+    <?php } ?>
 
+    <div class="main-panel">
       <?php if (! empty($config['FORM_TITLE'])) { ?>
         <h1 class="text-center mt-2"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
       <?php } ?>
@@ -50,28 +51,8 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>About Us</h3>
-          <p>
-            Our Business Information Report Snapshot is a collection of business credit scores and ratings that help you gauge the financial health of your customers, suppliers, and business partners.
-          </p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="<?php $publicUrl ?>">Home</a></li>
-            <li><a href="<?php $publicUrl ?>">About</a></li>
-            <li><a href="<?php $publicUrl ?>">Services</a></li>
-            <li><a href="<?php $publicUrl ?>">Portfolio</a></li>
-            <li><a href="<?php $publicUrl ?>">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>
-            8481 Aviator Ln Englewood, CO, 80112-7128 United States
-          </p>
-          <p>Email: airmax.ge@yahoo.com</p>
-          <p>Phone: +995593303384, +995568555565</p>
+          <p><span class="bi bi-phone-fill"> : 1-866-449-8651 / 928-565-6707</span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : airmaxhelpdesk@gmail.com</span>&nbsp&nbsp<span class="bi bi-clock"> Mon Fri 9am 6pm</span></p>
+          <p>© 2014 - 2024 Airmax Internet.</p>
         </div>
       </div>
     </footer>
@@ -80,5 +61,17 @@
 
     <div id="ember-bootstrap-wormhole"></div>
     <div id="ember-basic-dropdown-wormhole"></div>
+
+    <!-- Begin of Chaport Live Chat code -->
+    <script type="text/javascript">
+    (function(w,d,v3){
+    w.chaportConfig = {
+    appId : '65778b6b2217dc35d31e2c51'
+    };
+
+    if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+    </script>
+    <!-- End of Chaport Live Chat code -->
+
   </body>
 </html>

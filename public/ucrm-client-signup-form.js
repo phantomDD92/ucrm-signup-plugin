@@ -1312,6 +1312,12 @@ define('ucrm-client-signup-form/helpers/cancel-all', ['exports', 'ember-concurre
       return _cancelAll.default;
     }
   });
+  Object.defineProperty(exports, 'cancelAll', {
+    enumerable: true,
+    get: function () {
+      return _cancelAll.cancelAll;
+    }
+  });
 });
 define('ucrm-client-signup-form/helpers/ember-power-select-is-group', ['exports', 'ember-power-select/helpers/ember-power-select-is-group'], function (exports, _emberPowerSelectIsGroup) {
   'use strict';
@@ -1598,6 +1604,12 @@ define('ucrm-client-signup-form/helpers/perform', ['exports', 'ember-concurrency
       return _perform.default;
     }
   });
+  Object.defineProperty(exports, 'perform', {
+    enumerable: true,
+    get: function () {
+      return _perform.perform;
+    }
+  });
 });
 define('ucrm-client-signup-form/helpers/pluralize', ['exports', 'ember-inflector/lib/helpers/pluralize'], function (exports, _pluralize) {
   'use strict';
@@ -1625,6 +1637,12 @@ define('ucrm-client-signup-form/helpers/task', ['exports', 'ember-concurrency/he
     enumerable: true,
     get: function () {
       return _task.default;
+    }
+  });
+  Object.defineProperty(exports, 'task', {
+    enumerable: true,
+    get: function () {
+      return _task.task;
     }
   });
 });
@@ -1764,6 +1782,12 @@ define('ucrm-client-signup-form/initializers/ember-concurrency', ['exports', 'em
       return _emberConcurrency.default;
     }
   });
+  Object.defineProperty(exports, 'initialize', {
+    enumerable: true,
+    get: function () {
+      return _emberConcurrency.initialize;
+    }
+  });
 });
 define('ucrm-client-signup-form/initializers/ember-data', ['exports', 'ember-data/setup-container', 'ember-data'], function (exports, _setupContainer) {
   'use strict';
@@ -1889,8 +1913,8 @@ define("ucrm-client-signup-form/instance-initializers/ember-data", ["exports", "
     initialize: _initializeStoreService.default
   };
 });
-define('ucrm-client-signup-form/models/client', ['exports', 'ember-data', 'ember-cp-validations'], function (exports, _emberData, _emberCpValidations) {
-  'use strict';
+define("ucrm-client-signup-form/models/client", ["exports", "ember-data", "ember-cp-validations"], function (exports, _emberData, _emberCpValidations) {
+  "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1899,28 +1923,32 @@ define('ucrm-client-signup-form/models/client', ['exports', 'ember-data', 'ember
 
 
   var Validations = (0, _emberCpValidations.buildValidations)({
-    firstName: [(0, _emberCpValidations.validator)('presence', true), (0, _emberCpValidations.validator)('length', {
+    firstName: [(0, _emberCpValidations.validator)("presence", true), (0, _emberCpValidations.validator)("length", {
       min: 3
     })],
-    lastName: [(0, _emberCpValidations.validator)('presence', true), (0, _emberCpValidations.validator)('length', {
+    lastName: [(0, _emberCpValidations.validator)("presence", true), (0, _emberCpValidations.validator)("length", {
       min: 3
     })],
-    email: [(0, _emberCpValidations.validator)('presence', true), (0, _emberCpValidations.validator)('format', { type: 'email' })],
-    phone: [(0, _emberCpValidations.validator)('presence', true)]
+    email: [(0, _emberCpValidations.validator)("presence", true), (0, _emberCpValidations.validator)("format", { type: "email" })],
+    phone: [(0, _emberCpValidations.validator)("presence", true)],
+    street1: [(0, _emberCpValidations.validator)("presence", true)],
+    city: [(0, _emberCpValidations.validator)("presence", true)],
+    zipCode: [(0, _emberCpValidations.validator)("presence", true)],
+    stateId: [(0, _emberCpValidations.validator)("presence", true)]
   });
 
   exports.default = _emberData.default.Model.extend(Validations, {
-    firstName: attr('string'),
-    lastName: attr('string'),
+    firstName: attr("string"),
+    lastName: attr("string"),
     contacts: attr(),
-    street1: attr('string'),
-    street2: attr('string'),
-    zipCode: attr('string'),
-    city: attr('string'),
-    email: attr('string'),
-    phone: attr('string'),
-    stateId: attr('number', { defaultValue: null }),
-    countryId: attr('number', { defaultValue: null })
+    street1: attr("string"),
+    street2: attr("string"),
+    zipCode: attr("string"),
+    city: attr("string"),
+    email: attr("string"),
+    phone: attr("string"),
+    stateId: attr("number", { defaultValue: null }),
+    countryId: attr("number", { defaultValue: null })
     // agreedToTAC: attr('boolean', {defaultValue: false}),
   });
 });
@@ -2386,7 +2414,7 @@ define("ucrm-client-signup-form/templates/components/user-details", ["exports"],
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.default = Ember.HTMLBars.template({ "id": "qmVD7qau", "block": "{\"symbols\":[\"form\",\"form\",\"key\",\"value\",\"state\",\"country\"],\"statements\":[[4,\"bs-form\",null,[[\"model\",\"novalidate\",\"onSubmit\"],[[20,[\"model\",\"client\"]],true,[25,\"action\",[[19,0,[]],\"submit\",[20,[\"model\",\"client\"]]],null]]],{\"statements\":[[0,\"  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"firstName\",\"given-name\",\"First Name\",\"firstName\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"lastName\",\"family-name\",\"Last Name\",\"lastName\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"email\",\"email\",\"email\",\"Email\",\"email\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"phone\",\"phone\",\"tel tel-national\",\"Phone Number\",\"phone\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\\n  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"street1\",\"street-address\",\"Street Address\",\"street1\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"street2\",\"\",\"Street Address 2\",\"street2\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"city\",\"address-level2\",\"City\",\"city\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"zip\",\"postal-code\",\"Postal Code\",\"zipCode\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\\n  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-4\"],[7],[0,\"\\n\"],[4,\"power-select\",null,[[\"searchField\",\"placeholder\",\"selected\",\"options\",\"onchange\"],[\"name\",\"Choose Country\",[20,[\"defaultCountry\"]],[20,[\"model\",\"countries\"]],[25,\"action\",[[19,0,[]],\"selectCountry\"],null]]],{\"statements\":[[0,\"        \"],[1,[19,6,[\"name\"]],false],[0,\"\\n\"]],\"parameters\":[6]},null],[0,\"    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-4\"],[7],[0,\"\\n\"],[4,\"if\",[[20,[\"states\"]]],null,{\"statements\":[[4,\"power-select\",null,[[\"searchField\",\"placeholder\",\"selected\",\"options\",\"onchange\"],[\"name\",\"Choose State\",[20,[\"selectedState\"]],[20,[\"states\"]],[25,\"action\",[[19,0,[]],\"selectState\"],null]]],{\"statements\":[[0,\"          \"],[1,[19,5,[\"name\"]],false],[0,\"\\n\"]],\"parameters\":[5]},null]],\"parameters\":[]},null],[0,\"    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\\n\"],[4,\"unless\",[[20,[\"error\"]]],null,{\"statements\":[[4,\"if\",[[20,[\"pending\"]]],null,{\"statements\":[[0,\"      \"],[6,\"div\"],[9,\"class\",\"alert alert-primary\"],[9,\"role\",\"alert\"],[7],[0,\"Submitting Information\"],[8],[0,\"\\n      \"],[6,\"div\"],[9,\"class\",\"row justify-content-center\"],[7],[0,\"\\n        \"],[6,\"div\"],[9,\"class\",\"col-auto\"],[7],[0,\"\\n          \"],[6,\"img\"],[9,\"src\",\"https://media.tenor.com/qCL9k1Zcek4AAAAM/loading.gif\"],[9,\"style\",\"display:inline-block;\"],[7],[8],[0,\"\\n        \"],[8],[0,\"\\n      \"],[8],[6,\"br\"],[9,\"clear\",\"all\"],[7],[8],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[20,[\"failure\"]]],null,{\"statements\":[[0,\"        \"],[6,\"div\"],[9,\"class\",\"alert alert-danger\"],[9,\"role\",\"alert\"],[7],[0,\"Sorry, there was an error\\n          with your request.\"],[8],[0,\"\\n\"],[4,\"if\",[[20,[\"errors\"]]],null,{\"statements\":[[4,\"bs-form\",null,[[\"class\",\"model\",\"novalidate\"],[\"container-fluid\",[20,[\"model\",\"client\"]],true]],{\"statements\":[[0,\"            \"],[6,\"div\"],[9,\"class\",\"row\"],[7],[0,\"\\n\"],[4,\"each\",[[25,\"-each-in\",[[20,[\"errors\"]]],null]],null,{\"statements\":[[0,\"                \"],[6,\"div\"],[9,\"class\",\"col-12 error-text\"],[7],[0,\"\\n\"],[4,\"if\",[[25,\"is-value\",[[19,3,[]],\"username\"],null]],null,{\"statements\":[[0,\"                    \"],[6,\"span\"],[9,\"style\",\"text-transform:capitalize;color:red\"],[7],[0,\"email\"],[8],[0,\"\\n                    -\\n                    \"],[1,[19,4,[]],false],[0,\"\\n                    \"],[1,[25,\"component\",[[19,2,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\",\"disabled\"],[\"email\",\"email\",\"email\",\"Email\",\"email\",true,true]]],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"                    \"],[6,\"span\"],[9,\"style\",\"text-transform:capitalize;\"],[7],[1,[19,3,[]],false],[8],[0,\"\\n                    -\\n                    \"],[1,[19,4,[]],false],[0,\"\\n                    \"],[1,[25,\"component\",[[19,2,[\"element\"]]],[[\"placeholder\",\"property\",\"required\"],[[19,3,[]],[19,3,[]],true]]],false],[0,\"\\n\"]],\"parameters\":[]}],[0,\"                \"],[8],[0,\"\\n\"]],\"parameters\":[3,4]},null],[0,\"            \"],[8],[0,\"\\n\"]],\"parameters\":[2]},null]],\"parameters\":[]},null],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]}]],\"parameters\":[]},null],[0,\"\\n  \"],[6,\"div\"],[9,\"class\",\"row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col text-center\"],[7],[0,\"\\n\"],[4,\"if\",[[20,[\"processing\"]]],null,{\"statements\":[[0,\"        \"],[6,\"div\"],[9,\"class\",\"btn btn-dark disabled\"],[9,\"id\",\"proceed\"],[7],[6,\"span\"],[7],[0,\"Processing\"],[8],[8],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[25,\"get\",[[20,[\"model\",\"client\",\"validations\"]],\"isInvalid\"],null]],null,{\"statements\":[[0,\"        \"],[6,\"div\"],[9,\"class\",\"btn btn-dark disabled\"],[9,\"id\",\"proceed\"],[7],[6,\"span\"],[7],[0,\"Provide Info\"],[8],[8],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"        \"],[6,\"button\"],[9,\"class\",\"btn btn-secondary\"],[9,\"id\",\"proceed\"],[9,\"type\",\"submit\"],[7],[6,\"span\"],[7],[0,\"Signup\"],[8],[8],[0,\"\\n      \"]],\"parameters\":[]}]],\"parameters\":[]}],[0,\"    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\"]],\"parameters\":[1]},null]],\"hasEval\":false}", "meta": { "moduleName": "ucrm-client-signup-form/templates/components/user-details.hbs" } });
+  exports.default = Ember.HTMLBars.template({ "id": "Zl892KqO", "block": "{\"symbols\":[\"form\",\"form\",\"key\",\"value\",\"state\",\"country\"],\"statements\":[[4,\"bs-form\",null,[[\"model\",\"novalidate\",\"onSubmit\"],[[20,[\"model\",\"client\"]],true,[25,\"action\",[[19,0,[]],\"submit\",[20,[\"model\",\"client\"]]],null]]],{\"statements\":[[0,\"  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"firstName\",\"given-name\",\"First Name\",\"firstName\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"lastName\",\"family-name\",\"Last Name\",\"lastName\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"email\",\"email\",\"email\",\"Email\",\"email\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"phone\",\"phone\",\"tel tel-national\",\"Phone Number\",\"phone\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\\n  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"street1\",\"street-address\",\"Street Address\",\"street1\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"street2\",\"\",\"Street Address 2\",\"street2\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"city\",\"address-level2\",\"City\",\"city\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-2\"],[7],[0,\"\\n      \"],[1,[25,\"component\",[[19,1,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\"],[\"text\",\"zip\",\"postal-code\",\"Postal Code\",\"zipCode\",true]]],false],[0,\"\\n    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\\n  \"],[6,\"div\"],[9,\"class\",\"form-row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-4\"],[7],[0,\"\\n\"],[4,\"power-select\",null,[[\"searchField\",\"placeholder\",\"selected\",\"options\",\"onchange\"],[\"name\",\"Choose Country\",[20,[\"defaultCountry\"]],[20,[\"model\",\"countries\"]],[25,\"action\",[[19,0,[]],\"selectCountry\"],null]]],{\"statements\":[[0,\"        \"],[1,[19,6,[\"name\"]],false],[0,\"\\n\"]],\"parameters\":[6]},null],[0,\"    \"],[8],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col-md-6 mb-4\"],[7],[0,\"\\n\"],[4,\"if\",[[20,[\"states\"]]],null,{\"statements\":[[4,\"power-select\",null,[[\"searchField\",\"placeholder\",\"selected\",\"options\",\"onchange\"],[\"name\",\"Choose State\",[20,[\"selectedState\"]],[20,[\"states\"]],[25,\"action\",[[19,0,[]],\"selectState\"],null]]],{\"statements\":[[0,\"          \"],[1,[19,5,[\"name\"]],false],[0,\"\\n\"]],\"parameters\":[5]},null]],\"parameters\":[]},null],[0,\"    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\\n\"],[4,\"unless\",[[20,[\"error\"]]],null,{\"statements\":[[4,\"if\",[[20,[\"pending\"]]],null,{\"statements\":[[0,\"      \"],[6,\"div\"],[9,\"class\",\"alert alert-primary\"],[9,\"role\",\"alert\"],[7],[0,\"Submitting Information\"],[8],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[20,[\"failure\"]]],null,{\"statements\":[[0,\"        \"],[6,\"div\"],[9,\"class\",\"alert alert-danger\"],[9,\"role\",\"alert\"],[7],[0,\"Sorry, there was an error\\n          with your request.\"],[8],[0,\"\\n\"],[4,\"if\",[[20,[\"errors\"]]],null,{\"statements\":[[4,\"bs-form\",null,[[\"class\",\"model\",\"novalidate\"],[\"container-fluid\",[20,[\"model\",\"client\"]],true]],{\"statements\":[[0,\"            \"],[6,\"div\"],[9,\"class\",\"row\"],[7],[0,\"\\n\"],[4,\"each\",[[25,\"-each-in\",[[20,[\"errors\"]]],null]],null,{\"statements\":[[0,\"                \"],[6,\"div\"],[9,\"class\",\"col-12 error-text\"],[7],[0,\"\\n\"],[4,\"if\",[[25,\"is-value\",[[19,3,[]],\"username\"],null]],null,{\"statements\":[[0,\"                    \"],[6,\"span\"],[9,\"style\",\"text-transform:capitalize;color:red\"],[7],[0,\"email\"],[8],[0,\"\\n                    -\\n                    \"],[1,[19,4,[]],false],[0,\"\\n                    \"],[1,[25,\"component\",[[19,2,[\"element\"]]],[[\"controlType\",\"id\",\"autocomplete\",\"placeholder\",\"property\",\"required\",\"disabled\"],[\"email\",\"email\",\"email\",\"Email\",\"email\",true,true]]],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"                    \"],[6,\"span\"],[9,\"style\",\"text-transform:capitalize;\"],[7],[1,[19,3,[]],false],[8],[0,\"\\n                    -\\n                    \"],[1,[19,4,[]],false],[0,\"\\n                    \"],[1,[25,\"component\",[[19,2,[\"element\"]]],[[\"placeholder\",\"property\",\"required\"],[[19,3,[]],[19,3,[]],true]]],false],[0,\"\\n\"]],\"parameters\":[]}],[0,\"                \"],[8],[0,\"\\n\"]],\"parameters\":[3,4]},null],[0,\"            \"],[8],[0,\"\\n\"]],\"parameters\":[2]},null]],\"parameters\":[]},null]],\"parameters\":[]},null]],\"parameters\":[]}]],\"parameters\":[]},null],[0,\"\\n  \"],[6,\"div\"],[9,\"class\",\"row\"],[7],[0,\"\\n    \"],[6,\"div\"],[9,\"class\",\"col text-center\"],[7],[0,\"\\n\"],[4,\"if\",[[20,[\"processing\"]]],null,{\"statements\":[[0,\"        \"],[6,\"div\"],[9,\"class\",\"btn btn-dark disabled\"],[9,\"id\",\"proceed\"],[7],[6,\"span\"],[7],[0,\"Processing\"],[8],[8],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[25,\"get\",[[20,[\"model\",\"client\",\"validations\"]],\"isInvalid\"],null]],null,{\"statements\":[[0,\"        \"],[6,\"div\"],[9,\"class\",\"btn btn-dark disabled\"],[9,\"id\",\"proceed\"],[7],[6,\"span\"],[7],[0,\"Provide Info\"],[8],[8],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"        \"],[6,\"button\"],[9,\"class\",\"btn btn-secondary\"],[9,\"id\",\"proceed\"],[9,\"type\",\"submit\"],[7],[6,\"span\"],[7],[0,\"Signup\"],[8],[8],[0,\"\\n      \"]],\"parameters\":[]}]],\"parameters\":[]}],[0,\"    \"],[8],[0,\"\\n  \"],[8],[0,\"\\n\"]],\"parameters\":[1]},null]],\"hasEval\":false}", "meta": { "moduleName": "ucrm-client-signup-form/templates/components/user-details.hbs" } });
 });
 define("ucrm-client-signup-form/templates/signup", ["exports"], function (exports) {
   "use strict";
@@ -2642,6 +2670,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ucrm-client-signup-form/app")["default"].create({"rootElement":"#ember-signup","host":"http://localhost:8080/_plugins/ucrm-airmax-client-signup/public.php","completionText":"completiontextinformation","frontendKey":"development_key","isLead":"yes","name":"ucrm-client-signup-form","version":"1.0.0+3c569198"});
+  require("ucrm-client-signup-form/app")["default"].create({"rootElement":"#ember-signup","host":"http://localhost:8080/_plugins/ucrm-airmax-client-signup/public.php","completionText":"completiontextinformation","frontendKey":"development_key","isLead":"yes","name":"ucrm-client-signup-form","version":"1.0.0+59db50e5"});
 }
 //# sourceMappingURL=ucrm-client-signup-form.map
