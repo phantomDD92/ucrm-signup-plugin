@@ -81,7 +81,6 @@ class Interpreter
     public function post($endpoint, $data)
     {
         if (self::validatePost($endpoint)) {
-            $client_data = 
             if($endpoint === 'clients') {
                 $developmentMode = true;
                 $mailer = new PHPMailer($developmentMode);
