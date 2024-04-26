@@ -108,11 +108,23 @@ class Interpreter
                     $mailer->Port = 587;
 
                     $mailer->setFrom('airmaxbilling@gmail.com', 'New Signup');
-                    $mailer->addAddress($data['username'], $data['firstName'].' '.$data['lastName']);
+                    $mailer->addAddress('airmaxhelpdesk@gmail.com', 'airmaxhelpdesk@gmail.com');
 
                     $mailer->isHTML(true);
                     $mailer->Subject = 'New Client Lead';
-                    $mailer->Body = 'New Signup';
+                    $contact = $data['contacts'][ array_key_first($data['contacts']) ];
+                    // $mailer->Body = 'New Signup';
+                    $mailer->Body = '<!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>New Signup</title>
+                    </head>
+                    <body>
+                        <p>User name: '.$contact->name.'</p>
+                        <p>User mail: '.$contact->email.'</p>
+                        <p>Phone number: '.$contact->phone.'</p>
+                    </body>
+                    </html>';
 
                     $mailer->send();
                     $mailer->ClearAllRecipients();

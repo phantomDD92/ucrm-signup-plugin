@@ -1312,12 +1312,6 @@ define('ucrm-client-signup-form/helpers/cancel-all', ['exports', 'ember-concurre
       return _cancelAll.default;
     }
   });
-  Object.defineProperty(exports, 'cancelAll', {
-    enumerable: true,
-    get: function () {
-      return _cancelAll.cancelAll;
-    }
-  });
 });
 define('ucrm-client-signup-form/helpers/ember-power-select-is-group', ['exports', 'ember-power-select/helpers/ember-power-select-is-group'], function (exports, _emberPowerSelectIsGroup) {
   'use strict';
@@ -1604,12 +1598,6 @@ define('ucrm-client-signup-form/helpers/perform', ['exports', 'ember-concurrency
       return _perform.default;
     }
   });
-  Object.defineProperty(exports, 'perform', {
-    enumerable: true,
-    get: function () {
-      return _perform.perform;
-    }
-  });
 });
 define('ucrm-client-signup-form/helpers/pluralize', ['exports', 'ember-inflector/lib/helpers/pluralize'], function (exports, _pluralize) {
   'use strict';
@@ -1637,12 +1625,6 @@ define('ucrm-client-signup-form/helpers/task', ['exports', 'ember-concurrency/he
     enumerable: true,
     get: function () {
       return _task.default;
-    }
-  });
-  Object.defineProperty(exports, 'task', {
-    enumerable: true,
-    get: function () {
-      return _task.task;
     }
   });
 });
@@ -1780,12 +1762,6 @@ define('ucrm-client-signup-form/initializers/ember-concurrency', ['exports', 'em
     enumerable: true,
     get: function () {
       return _emberConcurrency.default;
-    }
-  });
-  Object.defineProperty(exports, 'initialize', {
-    enumerable: true,
-    get: function () {
-      return _emberConcurrency.initialize;
     }
   });
 });
@@ -2670,6 +2646,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ucrm-client-signup-form/app")["default"].create({"rootElement":"#ember-signup","host":"http://localhost:8080/_plugins/ucrm-airmax-client-signup/public.php","completionText":"completiontextinformation","frontendKey":"development_key","isLead":"yes","name":"ucrm-client-signup-form","version":"1.0.0+59db50e5"});
+  require("ucrm-client-signup-form/app")["default"].create({"rootElement":"#ember-signup","host":"http://localhost:8080/_plugins/ucrm-airmax-client-signup/public.php","completionText":"completiontextinformation","frontendKey":"development_key","isLead":"yes","name":"ucrm-client-signup-form","version":"1.0.0+a7cf0866"});
 }
 //# sourceMappingURL=ucrm-client-signup-form.map
