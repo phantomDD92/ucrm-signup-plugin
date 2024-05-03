@@ -15,7 +15,15 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   </head>
-  <body>
+  <style>
+    .header, .form-description, .account-wrapper > div, .footer  {
+      background-color: <?php echo htmlspecialchars($config['BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+    }
+    .menu li a, .text-center, .form-description, .footer-section p, .footer-section span {
+      color: <?php echo htmlspecialchars($config['TEXT_COLOR'], ENT_QUOTES); ?>;
+    }
+  </style>
+  <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>'); height:auto;">
     <header class="header">
       <nav>
         <ul class="menu">
@@ -43,7 +51,6 @@
         </div>
         <br clear="all">
       <?php } ?>
-      
       <div id="ember-signup"></div>
     </div>
 

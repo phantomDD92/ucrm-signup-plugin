@@ -45,6 +45,49 @@
       "type": "checkbox",
       "description": "Create Lead instead of Client",
       "required": 0
+    },
+    {
+      "key": "BACKGROUND_IMAGE",
+      "label": "Background Image URL",
+      "description": "Set Background Image URL. (Text Only)",
+      "required": 0
+    },
+    {
+      "key": "BACKGROUND_COLOR",
+      "label": "Background Color",
+      "description": "Set Background Color",
+      "required": 0
+    },
+    {
+      "key": "TEXT_COLOR",
+      "label": "Text Color",
+      "description": "Choose Text Color.",
+      "required": 1,
+      "type": "choice",
+      "choices": {
+        "blue": "#007bff",
+        "indigo": "#6610f2",
+        "purple": "#6f42c1",
+        "pink": "#e83e8c",
+        "red": "#dc3545",
+        "orange": "#fd7e14",
+        "yellow": "#ffc107",
+        "green": "#28a745",
+        "teal": "#20c997",
+        "cyan": "#17a2b8",
+        "white": "#fff",
+        "gray": "#6c757d",
+        "gray-dark": "#343a40",
+        "primary": "#198754",
+        "secondary": "#0073a1",
+        "success": "#28a745",
+        "info": "#17a2b8",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "light": "#eee",
+        "dark": "#272727",
+        "black":"#000000"
+      }
     }
   ]
 }
