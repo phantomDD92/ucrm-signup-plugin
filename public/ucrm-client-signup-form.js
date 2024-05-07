@@ -2646,6 +2646,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("ucrm-client-signup-form/app")["default"].create({"rootElement":"#ember-signup","host":"http://localhost:8080/_plugins/ucrm-airmax-client-signup/public.php","completionText":"completiontextinformation","frontendKey":"development_key","isLead":"yes","name":"ucrm-client-signup-form","version":"1.0.0+a7cf0866"});
+  require("ucrm-client-signup-form/app")["default"].create({"rootElement":"#ember-signup","host":"http://localhost:8080/_plugins/ucrm-airmax-client-signup/public.php","completionText":"completiontextinformation","frontendKey":"development_key","isLead":"yes","name":"ucrm-client-signup-form","version":"1.0.0"});
 }
 //# sourceMappingURL=ucrm-client-signup-form.map

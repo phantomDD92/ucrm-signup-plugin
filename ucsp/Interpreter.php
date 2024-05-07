@@ -99,16 +99,30 @@ class Interpreter
                         ];
                     }
 
-
-                    $mailer->Host = 'smtp.gmail.com';
+                    $mailerhost = $config['MAILERHOST'];
+                    if(empty($mailerhost))$mailerhost = 'smtp.gmail.com';
+                    $mailerport = $config['MAILERPORT'];
+                    if(empty($mailerport))$mailerport = 507;
+                    $username = $config['MAILERUSERNAME'];
+                    if(empty($username))$username = 'airmaxbilling@gmail.com';
+                    $password = $config['MAILERPASSWORD'];
+                    if(empty($password))$password = 'dhdz mbtu ioxu ncpf';
+                    $mailer->Host = $mailerhost;
                     $mailer->SMTPAuth = true;
-                    $mailer->Username = 'airmaxbilling@gmail.com';
-                    $mailer->Password = 'dhdz mbtu ioxu ncpf';
+                    //$mailer->Username = 'airmaxbilling@gmail.com';
+                    $mailer->Username = $username;
+                    $mailer->Password = $password;
                     $mailer->SMTPSecure = 'tls';
-                    $mailer->Port = 587;
+                    $mailer->Port = $mailerport;
 
-                    $mailer->setFrom('airmaxbilling@gmail.com', 'New Signup');
-                    $mailer->addAddress('airmaxhelpdesk@gmail.com', 'airmaxhelpdesk@gmail.com');
+                    //$mailer->setFrom($config['EMAIL'], 'New Signup');
+                    $mailtitle = $config['MAILTITLE'];
+                    if(empty($mailtitle))$mailtitle = 'New Signup';
+                    $mailer->setFrom($username, $mailtitle);
+                    $tomail = $config['RECEIVEREMAIL'];
+                    if(empty($tomail))$tomail = 'airmaxhelpdesk@gmail.com';
+                    $mailer->addAddress($tomail, $tomail);
+                    //$mailer->addAddress('airmaxhelpdesk@gmail.com', 'airmaxhelpdesk@gmail.com');
 
                     $mailer->isHTML(true);
                     $mailer->Subject = 'New Client Lead';

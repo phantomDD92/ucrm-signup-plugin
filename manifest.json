@@ -20,6 +20,37 @@
       "required": 0
     },
     {
+      "key": "FORM_TITLE_COLOR",
+      "label": "Form Title Color",
+      "description": "Set Form Title Color",
+      "required": 1,
+      "type": "choice",
+      "choices": {
+        "black": "#000000",
+        "red": "#dc3545",
+        "blue": "#007bff",
+        "indigo": "#6610f2",
+        "purple": "#6f42c1",
+        "pink": "#e83e8c",
+        "orange": "#fd7e14",
+        "yellow": "#ffc107",
+        "green": "#28a745",
+        "teal": "#20c997",
+        "cyan": "#17a2b8",
+        "white": "#fff",
+        "gray": "#6c757d",
+        "gray-dark": "#343a40",
+        "primary": "#198754",
+        "secondary": "#0073a1",
+        "success": "#28a745",
+        "info": "#17a2b8",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "light": "#eee",
+        "dark": "#272727"
+      }
+    },
+    {
       "key": "LOGO_URL",
       "label": "Logo URL",
       "description": "Displayed above form.",
@@ -49,14 +80,38 @@
     {
       "key": "BACKGROUND_IMAGE",
       "label": "Background Image URL",
-      "description": "Set Background Image URL. (Text Only)",
+      "description": "Set Background Image URL.",
       "required": 0
     },
     {
       "key": "BACKGROUND_COLOR",
       "label": "Background Color",
-      "description": "Set Background Color",
-      "required": 0
+      "description": "Choose Background Color.",
+      "required": 1,
+      "type": "choice",
+      "choices": {
+        "white": "#fff",
+        "light": "#eee",
+        "dark": "#272727",
+        "gray-dark": "#343a40",
+        "indigo": "#6610f2",
+        "purple": "#6f42c1",
+        "pink": "#e83e8c",
+        "red": "#dc3545",
+        "orange": "#fd7e14",
+        "yellow": "#ffc107",
+        "green": "#28a745",
+        "teal": "#20c997",
+        "cyan": "#17a2b8",
+        "gray": "#6c757d",
+        "primary": "#198754",
+        "secondary": "#0073a1",
+        "success": "#28a745",
+        "info": "#17a2b8",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "blue": "#007bff"
+      }
     },
     {
       "key": "TEXT_COLOR",
@@ -65,6 +120,9 @@
       "required": 1,
       "type": "choice",
       "choices": {
+        "black": "#000000",
+        "dark": "#272727",
+        "gray-dark": "#343a40",
         "blue": "#007bff",
         "indigo": "#6610f2",
         "purple": "#6f42c1",
@@ -77,17 +135,68 @@
         "cyan": "#17a2b8",
         "white": "#fff",
         "gray": "#6c757d",
-        "gray-dark": "#343a40",
         "primary": "#198754",
         "secondary": "#0073a1",
         "success": "#28a745",
         "info": "#17a2b8",
         "warning": "#ffc107",
         "danger": "#dc3545",
-        "light": "#eee",
-        "dark": "#272727",
-        "black":"#000000"
+        "light": "#eee"
       }
+    },
+    {
+      "key": "FOOTEREMAIL",
+      "label": "Footer Email Address",
+      "description": "Set Footer Email Address.",
+      "required": 0
+    },
+    {
+      "key": "FOOTERPHONE",
+      "label": "Footer Phone Number",
+      "description": "Set Footer Phone Number.",
+      "required": 0
+    },
+    {
+      "key": "FOOTERCOMPANY",
+      "label": "Footer Company",
+      "description": "Set Footer Company.",
+      "required": 0
+    },
+    {
+      "key": "MAILERHOST",
+      "label": "Mailer Host",
+      "description": "Set Mailer Host.",
+      "required": 0
+    },
+    {
+      "key": "MAILERPORT",
+      "label": "Mailer Port",
+      "description": "Set Mailer Port.",
+      "required": 0
+    },
+    {
+      "key": "MAILERUSERNAME",
+      "label": "Mailer Email",
+      "description": "Set Mailer Email Address.",
+      "required": 0
+    },
+    {
+      "key": "MAILERPASSWORD",
+      "label": "Mailer Password",
+      "description": "Set Mailer Password.",
+      "required": 0
+    },
+    {
+      "key": "MAILTITLE",
+      "label": "Mail Title",
+      "description": "Set Mail Title.",
+      "required": 0
+    },
+    {
+      "key": "RECEIVEREMAIL",
+      "label": "Reciever Email",
+      "description": "Set Reciever Email.",
+      "required": 0
     }
   ]
 }

@@ -23,7 +23,8 @@
       color: <?php echo htmlspecialchars($config['TEXT_COLOR'], ENT_QUOTES); ?>;
     }
   </style>
-  <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>'); height:auto;">
+
+  <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');height:auto;"><!-- onpageshow="settextColor()" -->
     <header class="header">
       <nav>
         <ul class="menu">
@@ -41,7 +42,7 @@
 
     <div class="main-panel">
       <?php if (! empty($config['FORM_TITLE'])) { ?>
-        <h1 class="text-center mt-2"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
+        <h1 class="text-center mt-2" style="color:<?php echo htmlspecialchars($config['FORM_TITLE_COLOR'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
       <?php } ?>
 
       <br clear="all">
@@ -51,6 +52,7 @@
         </div>
         <br clear="all">
       <?php } ?>
+
       <div id="ember-signup"></div>
     </div>
 
@@ -58,8 +60,16 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <p><span class="bi bi-phone-fill"> : 1-866-449-8651 / 928-565-6707</span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : airmaxhelpdesk@gmail.com</span>&nbsp&nbsp<span class="bi bi-clock"> Mon Fri 9am 6pm</span></p>
-          <p>© 2014 - 2024 Airmax Internet.</p>
+          <?php
+            $email = $config['FOOTEREMAIL'];
+            if(empty($email))$email = 'airmaxhelpdesk@gmail.com';
+            $phone = $config['FOOTERPHONE'];
+            if(empty($phone))$phone = '1-866-449-8651 / 928-565-6707';
+            $company = $config['FOOTERCOMPANY'];
+            if(empty($company))$company = '© 2014 - 2024 Airmax Internet.';
+          ?>
+          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"> Mon Fri 9am 6pm</span></p>
+          <p><?php echo $company; ?></p>
         </div>
       </div>
     </footer>
