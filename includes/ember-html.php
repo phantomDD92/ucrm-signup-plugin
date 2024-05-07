@@ -16,15 +16,20 @@
 
   </head>
   <style>
+    body {
+      background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');
+      height:auto;
+    }
     .header, .form-description, .account-wrapper > div, .footer  {
       background-color: <?php echo htmlspecialchars($config['BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      opacity: 0.95;
     }
     .menu li a, .text-center, .form-description, .footer-section p, .footer-section span {
       color: <?php echo htmlspecialchars($config['TEXT_COLOR'], ENT_QUOTES); ?>;
     }
   </style>
 
-  <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');height:auto;"><!-- onpageshow="settextColor()" -->
+  <body><!-- onpageshow="settextColor()" -->
     <header class="header">
       <nav>
         <ul class="menu">
