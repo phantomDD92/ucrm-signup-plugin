@@ -20,13 +20,23 @@
       background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');
       height:auto;
     }
-    .header, .form-description, .account-wrapper > div, .footer  {
+    .header  {
+      background-color: <?php echo htmlspecialchars($config['BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      opacity: 0.85;
+      height: 60px
+    }
+    .footer  {
       background-color: <?php echo htmlspecialchars($config['BACKGROUND_COLOR'], ENT_QUOTES); ?>;
       opacity: 0.95;
+    }
+    .form-description, .account-wrapper > div  {
+      background-color: <?php echo htmlspecialchars($config['BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      opacity: 0.8;
     }
     .menu li a, .text-center, .form-description, .footer-section p, .footer-section span {
       color: <?php echo htmlspecialchars($config['TEXT_COLOR'], ENT_QUOTES); ?>;
     }
+    
   </style>
 
   <body><!-- onpageshow="settextColor()" -->
@@ -41,11 +51,10 @@
       </nav>
     </header>
 
-    <?php if (! empty($config['LOGO_URL'])) { ?>
-      <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
-    <?php } ?>
-
     <div class="main-panel">
+      <?php if (! empty($config['LOGO_URL'])) { ?>
+        <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
+      <?php } ?>
       <?php if (! empty($config['FORM_TITLE'])) { ?>
         <h1 class="text-center mt-2" style="color:<?php echo htmlspecialchars($config['FORM_TITLE_COLOR'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
       <?php } ?>
