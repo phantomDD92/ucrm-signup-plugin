@@ -14,79 +14,59 @@
   },
   "configuration": [
     {
-      "key": "FORM_TITLE",
-      "label": "Form Title",
-      "description": "Displayed below logo before form description",
+      "key": "BACKGROUND_IMAGE",
+      "label": "Background Image",
+      "description": "Background Image URL (ex. https://example.com/background.jpg)",
       "required": 0
     },
     {
-      "key": "FORM_TITLE_COLOR",
-      "label": "Form Title Color",
-      "description": "Set Form Title Color",
-      "required": 1,
-      "type": "choice",
-      "choices": {
-        "black": "#000000",
-        "red": "#dc3545",
-        "blue": "#007bff",
-        "indigo": "#6610f2",
-        "purple": "#6f42c1",
-        "pink": "#e83e8c",
-        "orange": "#fd7e14",
-        "yellow": "#ffc107",
-        "green": "#28a745",
-        "teal": "#20c997",
-        "cyan": "#17a2b8",
-        "white": "#fff",
-        "gray": "#6c757d",
-        "gray-dark": "#343a40",
-        "primary": "#198754",
-        "secondary": "#0073a1",
-        "success": "#28a745",
-        "info": "#17a2b8",
-        "warning": "#ffc107",
-        "danger": "#dc3545",
-        "light": "#eee",
-        "dark": "#272727"
-      }
+      "key": "LOGO_URL",
+      "label": "Logo Image",
+      "description": "Logo Image Url (ex. https://example.com/logo.png)",
+      "required": 0
     },
     {
-      "key": "LOGO_URL",
-      "label": "Logo URL",
-      "description": "Displayed above form.",
+      "key": "FORM_TITLE",
+      "label": "Form Title",
+      "description": "Form Title (ex. Sign Up for Internet Services)",
       "required": 0
     },
     {
       "key": "FORM_DESCRIPTION",
       "label": "Form Description",
-      "description": "Displayed below logo before the form. (Can contain HTML)",
+      "description": "Displayed before the form. (ex. Thank you for your interest in Airmax Internet!)",
       "type": "textarea",
+      "required": 0
+    },
+    {
+      "key": "FOOTEREMAIL",
+      "label": "Footer Email Address",
+      "description": "Footer email address (ex. 1-866-449-8651)",
+      "required": 0
+    },
+    {
+      "key": "FOOTERPHONE",
+      "label": "Footer Phone Number",
+      "description": "Footer phone number (ex. airmaxhelpdesk@gmail.com)",
+      "required": 0
+    },
+    {
+      "key": "FOOTERCOMPANY",
+      "label": "Footer Company",
+      "description": "Footer company name (ex. © 2014 - 2024 Airmax Internet)",
       "required": 0
     },
     {
       "key": "COMPLETION_TEXT",
       "label": "Completion Text",
-      "description": "Text shown upon signup completion. (Text Only)",
+      "description": "Text shown upon signup completion. (ex. Signup Completed)",
       "type": "textarea",
-      "required": 0
-    },
-    {
-      "key": "LEAD",
-      "label": "Create Lead",
-      "type": "checkbox",
-      "description": "Create Lead instead of Client",
-      "required": 0
-    },
-    {
-      "key": "BACKGROUND_IMAGE",
-      "label": "Background Image URL",
-      "description": "Set Background Image URL.",
       "required": 0
     },
     {
       "key": "BACKGROUND_COLOR",
       "label": "Background Color",
-      "description": "Choose Background Color.",
+      "description": "Background color for header, footer, description and form",
       "required": 1,
       "type": "choice",
       "choices": {
@@ -116,7 +96,7 @@
     {
       "key": "TEXT_COLOR",
       "label": "Text Color",
-      "description": "Choose Text Color.",
+      "description": "Text color for header, footer, description and form",
       "required": 1,
       "type": "choice",
       "choices": {
@@ -145,57 +125,77 @@
       }
     },
     {
-      "key": "FOOTEREMAIL",
-      "label": "Footer Email Address",
-      "description": "Set Footer Email Address.",
-      "required": 0
+      "key": "FORM_TITLE_COLOR",
+      "label": "Form Title Color",
+      "description": "Text color for form title",
+      "required": 1,
+      "type": "choice",
+      "choices": {
+        "black": "#000000",
+        "red": "#dc3545",
+        "blue": "#007bff",
+        "indigo": "#6610f2",
+        "purple": "#6f42c1",
+        "pink": "#e83e8c",
+        "orange": "#fd7e14",
+        "yellow": "#ffc107",
+        "green": "#28a745",
+        "teal": "#20c997",
+        "cyan": "#17a2b8",
+        "white": "#fff",
+        "gray": "#6c757d",
+        "gray-dark": "#343a40",
+        "primary": "#198754",
+        "secondary": "#0073a1",
+        "success": "#28a745",
+        "info": "#17a2b8",
+        "warning": "#ffc107",
+        "danger": "#dc3545",
+        "light": "#eee",
+        "dark": "#272727"
+      }
     },
     {
-      "key": "FOOTERPHONE",
-      "label": "Footer Phone Number",
-      "description": "Set Footer Phone Number.",
-      "required": 0
-    },
-    {
-      "key": "FOOTERCOMPANY",
-      "label": "Footer Company",
-      "description": "Set Footer Company.",
+      "key": "LEAD",
+      "label": "Create Lead",
+      "type": "checkbox",
+      "description": "Create Lead instead of Client",
       "required": 0
     },
     {
       "key": "MAILERHOST",
-      "label": "Mailer Host",
-      "description": "Set Mailer Host.",
+      "label": "SMTP Server",
+      "description": "SMTP server (ex. smtp.example.com)",
       "required": 0
     },
     {
       "key": "MAILERPORT",
-      "label": "Mailer Port",
-      "description": "Set Mailer Port.",
+      "label": "SMTP Port",
+      "description": "SMTP server port (ex. 587)",
       "required": 0
     },
     {
       "key": "MAILERUSERNAME",
-      "label": "Mailer Email",
-      "description": "Set Mailer Email Address.",
+      "label": "SMTP Username",
+      "description": "SMTP username (ex. your_email@example.com)",
       "required": 0
     },
     {
       "key": "MAILERPASSWORD",
-      "label": "Mailer Password",
-      "description": "Set Mailer Password.",
+      "label": "SMTP Password",
+      "description": "SMTP password (ex. your_password)",
       "required": 0
     },
     {
       "key": "MAILTITLE",
       "label": "Mail Title",
-      "description": "Set Mail Title.",
+      "description": "Mail title (ex. New Signup)",
       "required": 0
     },
     {
       "key": "RECEIVEREMAIL",
-      "label": "Reciever Email",
-      "description": "Set Reciever Email.",
+      "label": "Recipient Email",
+      "description": "Recipient email address (ex. receiver@example.com)",
       "required": 0
     }
   ]
