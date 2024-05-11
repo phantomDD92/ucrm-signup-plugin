@@ -24,14 +24,36 @@
     }
   </style>
 
-  <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');height:auto;"><!-- onpageshow="settextColor()" -->
+  <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');"><!-- onpageshow="settextColor()" -->
     <header class="header">
       <nav>
         <ul class="menu">
-          <li><a href="https://www.airmaxcm.com/wireless/index.php">Home</a></li>
-          <li><a href="https://www.airmaxcm.com/wireless/index.php/about">About</a></li>
+          <?php 
+            if (empty($config['HEADER_MENU'])) { 
+              $menu = array('Home','About','View Packages','TERMS and CONDITIONS');
+              $menulink = array('https://www.airmaxcm.com/wireless/index.php','https://www.airmaxcm.com/wireless/index.php/about','https://www.airmaxcm.com/wireless/index.php/view-plans','https://www.airmaxcm.com/wireless/index.php/support-tools/terms-conditions');
+            }else{
+              $headermenu = $config['HEADER_MENU'];
+              $headermenu_array = explode(",",$headermenu);
+              $menu_cnt = count($headermenu_array);
+              $menu = array();
+              $menulink = array();
+              for($i=0;$i<$menu_cnt;$i++){
+                $pos=strpos($headermenu_array[$i],":");
+                //$menu_temp = explode(":",$headermenu_array[$i]);
+                array_push($menu,trim(substr($headermenu_array[$i], 0,$pos), " "));
+                array_push($menulink,trim(substr($headermenu_array[$i], $pos+1), " "));
+              }
+            }
+            $menu_cnt = count($menu);
+            for($i=0;$i<$menu_cnt;$i++){
+              echo '<li><a href="'.$menulink[$i].'">'.$menu[$i].'</a></li>';
+            }
+          ?>
+          
+          <!-- <li><a href="https://www.airmaxcm.com/wireless/index.php/about">About</a></li>
           <li><a href="https://www.airmaxcm.com/wireless/index.php/view-plans">View Packages</a></li>
-          <li><a href="https://www.airmaxcm.com/wireless/index.php/support-tools/terms-conditions">TERMS and CONDITIONS</a></li>
+          <li><a href="https://www.airmaxcm.com/wireless/index.php/support-tools/terms-conditions">TERMS and CONDITIONS</a></li> -->
         </ul>
       </nav>
     </header>
@@ -88,7 +110,11 @@
 
     if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
     </script>
+    <script type="text/javascript">
+      function setCountryList(countryList){
+        document.getElementById()
+      }
+    </script>
     <!-- End of Chaport Live Chat code -->
-
   </body>
 </html>
