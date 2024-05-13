@@ -75,15 +75,6 @@
       "label": "Completion Text",
       "description": "Text shown upon signup completion. (Text Only)",
       "type": "textarea",
-      "key": "FOOTEREMAIL",
-      "label": "Footer Email Address",
-      "description": "Footer email address (ex. airmaxhelpdesk@gmail.com)",
-      "required": 0
-    },
-    {
-      "key": "FOOTERPHONE",
-      "label": "Footer Phone Number",
-      "description": "Footer phone number (ex. 1-866-449-8651)",
       "required": 0
     },
     {
