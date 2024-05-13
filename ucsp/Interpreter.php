@@ -71,68 +71,9 @@ class Interpreter
         return $this->code;
     }
 
-    public function makeStateList($countryStates){
-
-        $countrylist=$GLOBALS['country_list'];
-        $temp_states=trim($countryStates,";\r\n ");
-        if(empty($temp_states)){
-            return [];
-        }
-        $temp_array = explode(";",$temp_states);
-        $n1=count($temp_array);
-        $res_json = [];
-        for($i=0; $i<$n1; $i++) {
-            $temp_cnt_array = explode(":",$temp_array[$i]);
-            $country_name = trim($temp_cnt_array[0],"\r\n ");
-            $countryId=$countrylist[$country_name];
-            // $res_json[$countryId]["countryId"]=$countryId;
-            $temp_state_array = explode(",",$temp_cnt_array[1]);
-            $n2=count($temp_state_array);
-            $res_states = [];
-            for($j=0; $j<$n2; $j++) {
-                $res_states[$j]['id']=$j+1;
-                $res_states[$j]['countryId']=$countryId;
-                $res_states[$j]['name']=trim($temp_state_array[$j]," ");
-                $res_states[$j]['code']=$res_states[$j]['name'];
-            }
-            $res_json[$countryId]=$res_states;
-        }
-        return $res_json;
-    }
-
     public function get($endpoint, $data)
     {
         if (self::validateGet($endpoint)) {
-            if($endpoint === 'countries/states') {
-                if(!($data['countryId'] === 249 || $data['countryId'] === 54)){
-                    $config=$GLOBALS['config'];
-                    $states = $this->makeStateList($config['SET_STATE']);
-                    if(array_key_exists($data['countryId'], $states)){
-                        return $states[$data['countryId']];
-                    }
-                    else {
-                        return [];
-                    }
-                    
-                    // $ret = array(
-                    //     array(
-                    //         "id" => 1,
-                    //         "countryId" => 249,
-                    //         "name" => "Alabama",
-                    //         "code" => "AL",
-                    //         "title" => $config['SET_STATE'],
-                    //     ),
-                    //     array(
-                    //         "id" => 2,
-                    //         "countryId" => 249,
-                    //         "name" => "Alaska",
-                    //         "code" => "AK",
-                    //     )
-                    // );
-                    // return $ret;
-                }
-            }
-
             return $this->api->get(
                 $endpoint,
                 $data
