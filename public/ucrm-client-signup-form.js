@@ -1056,21 +1056,24 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
     },
 
     states: Ember.computed("model.client.countryId", function () {
-      if (this.get("model.client.countryId") == 249 || this.get("model.client.countryId") == 54) {
-        return this.get("ajax").post(_environment.default.APP.host, {
-          data: {
-            frontendKey: _environment.default.APP.frontendKey,
-            api: {
-              type: "GET",
-              endpoint: "countries/states",
-              data: { countryId: this.get("model.client.countryId") }
-            }
+      // if (
+      //   this.get("model.client.countryId") == 249 ||
+      //   this.get("model.client.countryId") == 54
+      // ) {
+      return this.get("ajax").post(_environment.default.APP.host, {
+        data: {
+          frontendKey: _environment.default.APP.frontendKey,
+          api: {
+            type: "GET",
+            endpoint: "countries/states",
+            data: { countryId: this.get("model.client.countryId") }
           }
-        });
-      } else {
-        // this.set('model.client.stateId', null);
-        return false;
-      }
+        }
+      });
+      // } else {
+      //   // this.set('model.client.stateId', null);
+      //   return false;
+      // }
     }),
     defaultCountry: Ember.computed("model.countries", function () {
       // Retrieve the default country object based on its name
@@ -1101,7 +1104,7 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
         this.set("model.client.stateId", state.id);
         this.set("selectedState", state);
 
-        if (state.id == 249 || state.id == 54) {
+        // if (state.id == 249 || state.id == 54) {
           return this.get("ajax").post(_environment.default.APP.host, {
             data: {
               frontendKey: _environment.default.APP.frontendKey,
@@ -1112,10 +1115,11 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
               }
             }
           });
-        } else {
-          // this.set('model.client.stateId', null);
-          return false;
-        }
+        // }
+        // else {
+        //   this.set('model.client.stateId', null);
+        //   return false;
+        // }
       },
       submit: function submit(client) {
         var _this = this;
