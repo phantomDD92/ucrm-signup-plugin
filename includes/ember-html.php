@@ -16,12 +16,44 @@
 
   </head>
   <style>
-    .header, .form-description, .account-wrapper > div, .footer  {
-      background-color: <?php echo htmlspecialchars($config['BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+    /**----------- Set Header background-color, opacity, text-color -----------**/
+    .header, .account-wrapper > div {
+      background-color: <?php echo htmlspecialchars($config['HEADER_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      <?php 
+        if ($config['HEADER_BACKGROUND_TRANSPARENCY']) {
+          echo 'opacity: 0.8';
+        }
+      ?>
     }
-    .menu li a, .text-center, .form-description, .footer-section p, .footer-section span {
-      color: <?php echo htmlspecialchars($config['TEXT_COLOR'], ENT_QUOTES); ?>;
+    .menu li a {
+      color: <?php echo htmlspecialchars($config['HEADER_TEXT_COLOR'], ENT_QUOTES); ?>;
     }
+
+    /**----------- Set Form background-color, opacity, title, description text-color -----------**/
+    .main-panel {
+      background-color: <?php echo htmlspecialchars($config['FORM_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      <?php 
+        if ($config['FORM_BACKGROUND_TRANSPARENCY']) {
+          echo 'opacity: 0.8';
+        }
+      ?>
+    }
+    .form-description, .text-center {
+      color: <?php echo htmlspecialchars($config['FORM_TEXT_COLOR'], ENT_QUOTES); ?>;
+    }
+    /**----------- Set Footer background-color, opacity, text-color -----------**/
+    .footer {
+      background-color: <?php echo htmlspecialchars($config['FOOTER_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      <?php 
+        if ($config['FOOTER_BACKGROUND_TRANSPARENCY']) {
+          echo 'opacity: 0.8';
+        }
+      ?>
+    }
+    .footer-section p, .footer-section span {
+      color: <?php echo htmlspecialchars($config['FOOTER_TEXT_COLOR'], ENT_QUOTES); ?>;
+    }
+
   </style>
 
   <body style="background-image: url('<?php echo htmlspecialchars($config['BACKGROUND_IMAGE'], ENT_QUOTES); ?>');"><!-- onpageshow="settextColor()" -->
@@ -58,13 +90,14 @@
       </nav>
     </header>
 
+    <?php if (! empty($config['LOGO_IMAGE'])) { ?>
+      <img src="<?php echo htmlspecialchars($config['LOGO_IMAGE'], ENT_QUOTES); ?>" class="logo">
+    <?php } ?>
+
     <div class="main-panel">
-      <?php if (! empty($config['LOGO_URL'])) { ?>
-        <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
-      <?php } ?>
       <?php if (! empty($config['FORM_TITLE'])) { ?>
-        <h1 class="text-center mt-2" style="color:<?php echo htmlspecialchars($config['FORM_TITLE_COLOR'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
-      <?php } ?>
+        <h1 class="text-center mt-2" style="color:<?php echo htmlspecialchars($config['FORM_TEXT_COLOR'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
+      <?php }?>
 
       <br clear="all">
       <?php if (! empty($config['FORM_DESCRIPTION'])) { ?>
@@ -82,14 +115,18 @@
       <div class="footer-content">
         <div class="footer-section">
           <?php
-            $email = $config['FOOTEREMAIL'];
+            $email = $config['FOOTER_EMAIL'];
             if(empty($email))$email = 'airmaxhelpdesk@gmail.com';
-            $phone = $config['FOOTERPHONE'];
+            $phone = $config['FOOTER_PHONE'];
             if(empty($phone))$phone = '1-866-449-8651 / 928-565-6707';
-            $company = $config['FOOTERCOMPANY'];
+            $company = $config['FOOTER_COMPANY'];
             if(empty($company))$company = '© 2014 - 2024 Airmax Internet.';
           ?>
-          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"> Mon Fri 9am 6pm</span></p>
+          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"><?php
+            $service_time = $config['FOOTER_SERVICE_TIME'];
+            if(empty($service_time))$service_time = ' Mon Fri 9am 6pm';?>
+            </span>
+          </p>
           <p><?php echo $company; ?></p>
         </div>
       </div>
@@ -109,11 +146,19 @@
 
     if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
     </script>
-    <script type="text/javascript">
-      function setCountryList(countryList){
-        document.getElementById()
+    <!-- <script type="text/javascript">
+      myInterval =setInterval(setState, 40000);
+      function setState(){
+        clearInterval(myInterval);
+        alert("-------------aaaa");
+        // document.getElementById("firstName-field").value="Set Test";
+        var element = document.getElementById("ember486");
+        element.getElementsByTagName("span")[0].innerHTML="Canada";
+        element = document.getElementById("ember512");
+        element.getElementsByTagName("span")[0].innerHTML="Yukon";
       }
-    </script>
+      // setState("", "");
+    </script> -->
     <!-- End of Chaport Live Chat code -->
   </body>
 </html>

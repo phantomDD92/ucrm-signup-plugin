@@ -7252,10 +7252,9 @@ body {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   position: sticky;
-  top: 0;
-  height: 60px; }
+  top: 0; }
 
 .menu {
   list-style-type: none;
@@ -7284,6 +7283,8 @@ body {
   text-align: center;
   width: 100%;
   bottom: 0;
+  margin-top: 81px;
+  min-height: 100px;
   height: 100px;
   font-size: 14px; }
 
@@ -7298,10 +7299,6 @@ body {
 .footer-section h3 {
   font-size: 20px;
   margin-bottom: 20px; }
-
-.footer-section span {
-  margin-left: 3px;
-  margin-right: 3px; }
 
 .footer-section ul {
   list-style-type: none;
@@ -7355,7 +7352,7 @@ h1,
   color: red; }
 
 .main-panel {
-  min-height: calc(100vh - 180px); }
+  min-height: calc(100% - 250px); }
 
 .account-wrapper > div {
   background-color: rgba(0, 0, 0, 0.4);
