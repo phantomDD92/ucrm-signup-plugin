@@ -58,11 +58,10 @@
       </nav>
     </header>
 
-    <?php if (! empty($config['LOGO_URL'])) { ?>
-      <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
-    <?php } ?>
-
     <div class="main-panel">
+      <?php if (! empty($config['LOGO_URL'])) { ?>
+        <img src="<?php echo htmlspecialchars($config['LOGO_URL'], ENT_QUOTES); ?>" class="logo">
+      <?php } ?>
       <?php if (! empty($config['FORM_TITLE'])) { ?>
         <h1 class="text-center mt-2" style="color:<?php echo htmlspecialchars($config['FORM_TITLE_COLOR'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
       <?php } ?>

@@ -75,6 +75,15 @@
       "label": "Completion Text",
       "description": "Text shown upon signup completion. (Text Only)",
       "type": "textarea",
+      "key": "FOOTEREMAIL",
+      "label": "Footer Email Address",
+      "description": "Footer email address (ex. airmaxhelpdesk@gmail.com)",
+      "required": 0
+    },
+    {
+      "key": "FOOTERPHONE",
+      "label": "Footer Phone Number",
+      "description": "Footer phone number (ex. 1-866-449-8651)",
       "required": 0
     },
     {
@@ -97,6 +106,7 @@
       "required": 1,
       "type": "choice",
       "choices": {
+        "black": "#000000",
         "white": "#fff",
         "light": "#eee",
         "dark": "#272727",
@@ -127,6 +137,7 @@
       "required": 1,
       "type": "choice",
       "choices": {
+        "white": "#fff",
         "black": "#000000",
         "dark": "#272727",
         "gray-dark": "#343a40",
@@ -140,7 +151,6 @@
         "green": "#28a745",
         "teal": "#20c997",
         "cyan": "#17a2b8",
-        "white": "#fff",
         "gray": "#6c757d",
         "primary": "#198754",
         "secondary": "#0073a1",
@@ -465,6 +475,14 @@
       "label": "Reciever Email",
       "description": "Set Reciever Email. (Text Only)",
       "required": 0
+    }
+  ],
+  "menu": [
+    {
+      "key": "Sample",
+      "label": "Sample Menu",
+      "type": "client",
+      "target": "iframe"
     }
   ]
 }
