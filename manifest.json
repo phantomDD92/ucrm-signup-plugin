@@ -2,15 +2,15 @@
   "version": "1",
   "information": {
     "name": "ucrm-airmax-client-signup",
-    "displayName": "UCRMAIRMAX Client Signup",
-    "description": "A UCRM plugin that provides a frontend form for clients to signup.",
-    "url": "https://github.com/Ubiquiti-App/UCRM-plugins/tree/master/plugins/ucrm-client-signup",
-    "version": "1.4.2",
+    "displayName": "UCRM Advanced Client Signup",
+    "description": "A UCRM plugin that provides an advanced frontend page for clients to signup.",
+    "url": "",
+    "version": "2.1",
     "unmsVersionCompliancy": {
       "min": "2.1.0",
       "max": null
     },
-    "author": "UcrmAirmax, LLC"
+    "author": "AirmaxCM, LLC"
   },
   "configuration": [
     {
