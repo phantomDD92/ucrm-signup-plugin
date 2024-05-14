@@ -107,26 +107,13 @@ class Interpreter
     public function post($endpoint, $data)
     {
         $config=$GLOBALS['config'];
-        var_dump($config);
         if (self::validatePost($endpoint)) {
             if($endpoint === 'clients') {
                 $developmentMode = true;
                 $mailer = new PHPMailer($developmentMode);
                 try {
                     // set initial mailer settings
-                    // $mailerhost = 'smtp.gmail.com';
-
-                    $mailerhost = $config['MAILERHOST'];
-                    if(empty($mailerhost))$mailerhost = 'smtp.gmail.com';
-                    $mailerport = $config['MAILERPORT'];
-                    if(empty($mailerport))$mailerport = 507;
-                    $username = $config['MAILERUSERNAME'];
-                    if(empty($username))$username = 'airmaxbilling@gmail.com';
-                    $password = $config['MAILERPASSWORD'];
-                    if(empty($password))$password = 'dhdz mbtu ioxu ncpf';
-                    // $mailer->SMTPDebug = 0;
                     $mailer->isSMTP();
-
                     if ($developmentMode) {
                         $mailer->SMTPOptions = [
                             'ssl'=> [
@@ -136,7 +123,6 @@ class Interpreter
                             ]
                         ];
                     }
-
                     $mailerhost = $config['MAILER_HOST'];
                     if(empty($mailerhost))$mailerhost = 'smtp.gmail.com';
                     $mailerport = $config['MAILER_PORT'];

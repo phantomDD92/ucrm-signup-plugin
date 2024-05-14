@@ -2,7 +2,7 @@
   "version": "1",
   "information": {
     "name": "ucrm-airmax-client-signup",
-    "displayName": "UCRM Advanced Client Signup",
+    "displayName": "Advanced Client Signup",
     "description": "A UCRM plugin that provides an advanced frontend page for clients to signup.",
     "url": "",
     "version": "2.1",
@@ -28,7 +28,7 @@
     {
       "key": "HEADER_MENU",
       "label": "Header = Menu",
-      "description": "Set Header Menu. (Menuname1: link1, Menuname2: link2, ... )",
+      "description": "Set Header Menu. (ex: Home: http://example.com/, Services: http://example.com/services, About: http://example.com/about)",
       "type": "textarea",
       "required": 0
     },
@@ -597,6 +597,13 @@
       "key": "FOOTER_SERVICE_TIME",
       "label": "Footer = Service Time",
       "description": "Set Footer Service Time. (ex: Mon Fri 9am 6pm)",
+      "required": 0
+    },
+    {
+      "key": "HTML_BLOCK",
+      "label": "Custom = Html Block",
+      "description": "Set HTML or Javascript Code. (ex: <script>alert('this is a sample html block');</script>)",
+      "type": "textarea",
       "required": 0
     },
     {

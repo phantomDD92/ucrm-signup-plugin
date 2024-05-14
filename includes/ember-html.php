@@ -19,6 +19,7 @@
     /**----------- Set Header background-color, opacity, text-color -----------**/
     .header {
       background-color: <?php echo htmlspecialchars($config['HEADER_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
+      height:60px;
       <?php 
         if ($config['HEADER_BACKGROUND_TRANSPARENCY']) {
           echo 'opacity: 0.8';
@@ -38,11 +39,15 @@
         }
       ?>
     }
+    .main-panel {
+      min-height: calc(100vh - 160px)
+    }
     .form-description, .text-center {
       color: <?php echo htmlspecialchars($config['FORM_TEXT_COLOR'], ENT_QUOTES); ?>;
     }
     /**----------- Set Footer background-color, opacity, text-color -----------**/
     .footer {
+      margin-top:0px;
       background-color: <?php echo htmlspecialchars($config['FOOTER_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
       <?php 
         if ($config['FOOTER_BACKGROUND_TRANSPARENCY']) {
@@ -50,8 +55,12 @@
         }
       ?>
     }
-    .footer-section p, .footer-section span {
+    .footer-section p  {
       color: <?php echo htmlspecialchars($config['FOOTER_TEXT_COLOR'], ENT_QUOTES); ?>;
+    }
+    .footer-section span {
+      margin-left: 3px;
+      margin-right: 3px;
     }
 
   </style>
@@ -62,8 +71,8 @@
         <ul class="menu">
           <?php 
             if (empty($config['HEADER_MENU'])) { 
-              $menu = array('Home','About','View Packages','TERMS and CONDITIONS');
-              $menulink = array('https://www.example.com/wireless/index.php','https://www.example.com/wireless/index.php/about','https://www.example.com/wireless/index.php/view-plans','https://www.example.com/wireless/index.php/support-tools/terms-conditions');
+              $menu = array('Home','Services','About');
+              $menulink = array('#','#','#');
             }else{
               $headermenu = $config['HEADER_MENU'];
               $headermenu_array = explode(",",$headermenu);
@@ -86,11 +95,10 @@
       </nav>
     </header>
 
-    <?php if (! empty($config['LOGO_IMAGE'])) { ?>
-      <img src="<?php echo htmlspecialchars($config['LOGO_IMAGE'], ENT_QUOTES); ?>" class="logo">
-    <?php } ?>
-
     <div class="main-panel">
+      <?php if (! empty($config['LOGO_IMAGE'])) { ?>
+        <img src="<?php echo htmlspecialchars($config['LOGO_IMAGE'], ENT_QUOTES); ?>" class="logo">
+      <?php } ?>
       <?php if (! empty($config['FORM_TITLE'])) { ?>
         <h1 class="text-center mt-2" style="color:<?php echo htmlspecialchars($config['FORM_TEXT_COLOR'], ENT_QUOTES); ?>"><?php echo htmlspecialchars($config['FORM_TITLE'], ENT_QUOTES); ?></h1>
       <?php }?>
@@ -133,28 +141,7 @@
     <div id="ember-bootstrap-wormhole"></div>
     <div id="ember-basic-dropdown-wormhole"></div>
 
-    <!-- Begin of Chaport Live Chat code -->
-    <script type="text/javascript">
-    (function(w,d,v3){
-    w.chaportConfig = {
-    appId : '65778b6b2217dc35d31e2c51'
-    };
+    <?php echo $config['HTML_BLOCK']; ?>
 
-    if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
-    </script>
-    <!-- <script type="text/javascript">
-      myInterval =setInterval(setState, 40000);
-      function setState(){
-        clearInterval(myInterval);
-        alert("-------------aaaa");
-        // document.getElementById("firstName-field").value="Set Test";
-        var element = document.getElementById("ember486");
-        element.getElementsByTagName("span")[0].innerHTML="Canada";
-        element = document.getElementById("ember512");
-        element.getElementsByTagName("span")[0].innerHTML="Yukon";
-      }
-      // setState("", "");
-    </script> -->
-    <!-- End of Chaport Live Chat code -->
   </body>
 </html>
