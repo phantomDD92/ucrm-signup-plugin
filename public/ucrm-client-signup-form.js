@@ -1038,7 +1038,7 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
 
       this._super.apply(this, arguments);
       this.model.client.countryId = 249;
-      this.model.client.stateId = null;
+      this.model.client.stateId = 0;
 
       this.get('ajax').post(_environment.default.APP.host, {
         data: {
@@ -1105,8 +1105,14 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
         this.set("selectedCountry", country);
         this.set("defaultCountry", country);
 
-        this.set("model.client.stateId", null);
-        this.set("selectedState", null);
+        if (country.id == 249 || country.id == 54) {
+          this.set("model.client.stateId", null);
+          this.set("selectedState", null);
+        } else {
+          var state = { "id": 0, "countryId": country.id, "name": "", "code": "" };
+          this.set("model.client.stateId", state.id);
+          this.set("selectedState", state);
+        }
       },
       selectState: function selectState(state) {
         this.set("model.client.stateId", state.id);

@@ -78,6 +78,11 @@ class Interpreter
                 $config=$GLOBALS['config'];
                 $config['FORM_DEFAULT_COUNTRY_STATE'];
                 $temp_array = explode(",",$config['FORM_DEFAULT_COUNTRY_STATE']);
+                if(count($temp_array) < 4 ){
+                    $temp_array[3]=1;
+                    $temp_array[4]="";
+                    $temp_array[5]="";
+                }
                 return array(
                     "countryId" => $temp_array[0],
                     "countryName" => $temp_array[1],
@@ -87,7 +92,10 @@ class Interpreter
                     "stateCode" => $temp_array[5]
                 );               
             }
-            
+
+            // if($endpoint === 'countries/states' && !($data['countryId']===249 ||$data['countryId']===54)) {
+            //     return [];
+            // }       
             return $this->api->get(
                 $endpoint,
                 $data
