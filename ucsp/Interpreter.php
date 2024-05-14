@@ -132,9 +132,9 @@ class Interpreter
                     $mailerport = $config['MAILER_PORT'];
                     if(empty($mailerport))$mailerport = 587;
                     $username = $config['MAILER_USERNAME'];
-                    if(empty($username))$username = 'airmaxbilling@gmail.com';
+                    if(empty($username))$username = 'you_mailname@gmail.com';
                     $password = $config['MAILER_PASSWORD'];
-                    if(empty($password))$password = 'dhdz mbtu ioxu ncpf';
+                    if(empty($password))$password = '1234 5678 abcd efgh';
                     $mailer->Host = $mailerhost;
                     $mailer->SMTPAuth = true;
                     //$mailer->Username = 'airmaxbilling@gmail.com';
@@ -145,10 +145,10 @@ class Interpreter
 
                     //$mailer->setFrom($config['EMAIL'], 'New Signup');
                     $mailtitle = $config['MAILER_TITLE'];
-                    if(empty($mailtitle))$mailtitle = 'New Signup';
+                    if(empty($mailtitle))$mailtitle = 'Example Mail Title';
                     $mailer->setFrom($username, $mailtitle);
                     $tomail = $config['RECEIVER_EMAIL'];
-                    if(empty($tomail))$tomail = 'airmaxhelpdesk@gmail.com';
+                    if(empty($tomail))$tomail = 'tomail@gmail.com';
                     $mailer->addAddress($tomail, $tomail);
                     //$mailer->addAddress('airmaxhelpdesk@gmail.com', 'airmaxhelpdesk@gmail.com');
 

@@ -16,13 +16,13 @@
     {
       "key": "BACKGROUND_IMAGE",
       "label": "Background Image URL",
-      "description": "Set Background Image URL. (ex: http://res.cloudinary.com/dpdtzwqm7/image/upload/v1703544626/Donamix/vp506bgoyuhyaifbb9jk.png)",
+      "description": "Set Background Image URL. (ex: http://example.com/image/example.png)",
       "required": 0
     },
     {
       "key": "LOGO_IMAGE",
       "label": "Logo Image URL",
-      "description": "Displayed Logo Image URL",
+      "description": "Displayed Logo Image URL. (ex: http://example.com/image/logo.png)",
       "required": 0
     },
     {
@@ -180,20 +180,20 @@
     {
       "key": "FORM_TITLE",
       "label": "Form = Title",
-      "description": "Displayed Form Title",
+      "description": "Displayed Form Title. (ex: Example Form Title)",
       "required": 0
     },
     {
       "key": "FORM_DESCRIPTION",
       "label": "Form = Description",
-      "description": "Displayed Form Description.",
+      "description": "Displayed Form Description. (ex: Example Form Description)",
       "type": "textarea",
       "required": 0
     },
     {
       "key": "FORM_DEFAULT_COUNTRY_STATE",
       "label": "Form = Default Country/State",
-      "description": "Displayed below logo before the form. (Can contain HTML)",
+      "description": "Choose Default Country/State. (ex: Canada/Quebec)",
       "type": "choice",
       "choices": {
         "United States / Alabama" : "249,United States,US,1,Alabama,AL",
@@ -578,19 +578,19 @@
     {
       "key": "FOOTER_EMAIL",
       "label": "Footer = Email Address",
-      "description": "Set Footer Email Address. (Text Only)",
+      "description": "Set Footer Email Address. (ex: example@ex.com)",
       "required": 0
     },
     {
       "key": "FOOTER_PHONE",
       "label": "Footer = Phone Number",
-      "description": "Set Footer Phone Number. (Text Only)",
+      "description": "Set Footer Phone Number. (ex: 1-234-567-8901 / 123-456-7890)",
       "required": 0
     },
     {
       "key": "FOOTER_COMPANY",
       "label": "Footer = Company",
-      "description": "Set Footer Company. (Text Only)",
+      "description": "Set Footer Company. (ex: example Company)",
       "required": 0
     },
     {
@@ -602,43 +602,43 @@
     {
       "key": "MAILER_HOST",
       "label": "Mailer = Host",
-      "description": "Set Mailer Host. (Text Only)",
+      "description": "Set Mailer Host. (ex: hostname.gmail.com)",
       "required": 0
     },
     {
       "key": "MAILER_PORT",
       "label": "Mailer = Port",
-      "description": "Set Mailer Port. (Text Only)",
+      "description": "Set Mailer Port. (ex: 1234)",
       "required": 0
     },
     {
       "key": "MAILER_USERNAME",
       "label": "Mailer = User Name",
-      "description": "Set Mailer Username. (Text Only)",
+      "description": "Set Mailer Username. (ex: you_mailname@gmail.com)",
       "required": 0
     },
     {
       "key": "MAILER_PASSWORD",
       "label": "Mailer = Password",
-      "description": "Set Mailer Password. (Text Only)",
+      "description": "Set Mailer Password. (ex: 1234 5678 abcd efgh)",
       "required": 0
     },
     {
       "key": "MAILER_TITLE",
       "label": "Mailer = Title",
-      "description": "Set Mail Title. (Text Only)",
+      "description": "Set Mail Title. (ex: Example Mail Title)",
       "required": 0
     },
     {
       "key": "RECEIVER_EMAIL",
       "label": "Mailer = Reciever",
-      "description": "Set Reciever Email. (Text Only)",
+      "description": "Set Reciever Email. (ex: tomail@gmail.com)",
       "required": 0
     },
     {
       "key": "COMPLETION_TEXT",
       "label": "Mailer = Completion Text",
-      "description": "Text shown upon signup completion. (Text Only)",
+      "description": "Text shown upon signup completion. (ex: Signup Completed)",
       "type": "textarea",
       "required": 0
     }
