@@ -7252,7 +7252,7 @@ body {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-  /* opacity: 0.8; */
+  opacity: 0.8;
   position: sticky;
   top: 0; }
 

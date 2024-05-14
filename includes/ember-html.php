@@ -17,7 +17,7 @@
   </head>
   <style>
     /**----------- Set Header background-color, opacity, text-color -----------**/
-    .header, .account-wrapper > div {
+    .header {
       background-color: <?php echo htmlspecialchars($config['HEADER_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
       <?php 
         if ($config['HEADER_BACKGROUND_TRANSPARENCY']) {
@@ -30,7 +30,7 @@
     }
 
     /**----------- Set Form background-color, opacity, title, description text-color -----------**/
-    .main-panel {
+    .account-wrapper > div {
       background-color: <?php echo htmlspecialchars($config['FORM_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
       <?php 
         if ($config['FORM_BACKGROUND_TRANSPARENCY']) {
@@ -121,10 +121,10 @@
             if(empty($phone))$phone = '1-866-449-8651 / 928-565-6707';
             $company = $config['FOOTER_COMPANY'];
             if(empty($company))$company = '© 2014 - 2024 Airmax Internet.';
-          ?>
-          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"><?php
             $service_time = $config['FOOTER_SERVICE_TIME'];
-            if(empty($service_time))$service_time = ' Mon Fri 9am 6pm';?>
+            if(empty($service_time))$service_time = ' Mon Fri 9am 6pm';
+          ?>
+          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"><?php echo $service_time; ?>
             </span>
           </p>
           <p><?php echo $company; ?></p>

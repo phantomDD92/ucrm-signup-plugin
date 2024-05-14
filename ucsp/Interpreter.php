@@ -74,6 +74,20 @@ class Interpreter
     public function get($endpoint, $data)
     {
         if (self::validateGet($endpoint)) {
+            if($endpoint === 'countries/states' && $data['countryId']===300) {
+                $config=$GLOBALS['config'];
+                $config['FORM_DEFAULT_COUNTRY_STATE'];
+                $temp_array = explode(",",$config['FORM_DEFAULT_COUNTRY_STATE']);
+                return array(
+                    "countryId" => $temp_array[0],
+                    "countryName" => $temp_array[1],
+                    "countryCode" => $temp_array[2],
+                    "stateId" => $temp_array[3],
+                    "stateName" => $temp_array[4],
+                    "stateCode" => $temp_array[5]
+                );               
+            }
+            
             return $this->api->get(
                 $endpoint,
                 $data
@@ -105,13 +119,13 @@ class Interpreter
                         ];
                     }
 
-                    $mailerhost = $config['MAILERHOST'];
+                    $mailerhost = $config['MAILER_HOST'];
                     if(empty($mailerhost))$mailerhost = 'smtp.gmail.com';
-                    $mailerport = $config['MAILERPORT'];
-                    if(empty($mailerport))$mailerport = 507;
-                    $username = $config['MAILERUSERNAME'];
+                    $mailerport = $config['MAILER_PORT'];
+                    if(empty($mailerport))$mailerport = 587;
+                    $username = $config['MAILER_USERNAME'];
                     if(empty($username))$username = 'airmaxbilling@gmail.com';
-                    $password = $config['MAILERPASSWORD'];
+                    $password = $config['MAILER_PASSWORD'];
                     if(empty($password))$password = 'dhdz mbtu ioxu ncpf';
                     $mailer->Host = $mailerhost;
                     $mailer->SMTPAuth = true;
@@ -122,10 +136,10 @@ class Interpreter
                     $mailer->Port = $mailerport;
 
                     //$mailer->setFrom($config['EMAIL'], 'New Signup');
-                    $mailtitle = $config['MAILTITLE'];
+                    $mailtitle = $config['MAILER_TITLE'];
                     if(empty($mailtitle))$mailtitle = 'New Signup';
                     $mailer->setFrom($username, $mailtitle);
-                    $tomail = $config['RECEIVEREMAIL'];
+                    $tomail = $config['RECEIVER_EMAIL'];
                     if(empty($tomail))$tomail = 'airmaxhelpdesk@gmail.com';
                     $mailer->addAddress($tomail, $tomail);
                     //$mailer->addAddress('airmaxhelpdesk@gmail.com', 'airmaxhelpdesk@gmail.com');
