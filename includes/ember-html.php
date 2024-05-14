@@ -17,7 +17,7 @@
   </head>
   <style>
     /**----------- Set Header background-color, opacity, text-color -----------**/
-    .header, .account-wrapper > div {
+    .header {
       background-color: <?php echo htmlspecialchars($config['HEADER_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
       <?php 
         if ($config['HEADER_BACKGROUND_TRANSPARENCY']) {
@@ -30,7 +30,7 @@
     }
 
     /**----------- Set Form background-color, opacity, title, description text-color -----------**/
-    .main-panel {
+    .account-wrapper > div {
       background-color: <?php echo htmlspecialchars($config['FORM_BACKGROUND_COLOR'], ENT_QUOTES); ?>;
       <?php 
         if ($config['FORM_BACKGROUND_TRANSPARENCY']) {
@@ -63,7 +63,7 @@
           <?php 
             if (empty($config['HEADER_MENU'])) { 
               $menu = array('Home','About','View Packages','TERMS and CONDITIONS');
-              $menulink = array('https://www.airmaxcm.com/wireless/index.php','https://www.airmaxcm.com/wireless/index.php/about','https://www.airmaxcm.com/wireless/index.php/view-plans','https://www.airmaxcm.com/wireless/index.php/support-tools/terms-conditions');
+              $menulink = array('https://www.example.com/wireless/index.php','https://www.example.com/wireless/index.php/about','https://www.example.com/wireless/index.php/view-plans','https://www.example.com/wireless/index.php/support-tools/terms-conditions');
             }else{
               $headermenu = $config['HEADER_MENU'];
               $headermenu_array = explode(",",$headermenu);
@@ -82,10 +82,6 @@
               echo '<li><a href="'.$menulink[$i].'">'.$menu[$i].'</a></li>';
             }
           ?>
-          
-          <!-- <li><a href="https://www.airmaxcm.com/wireless/index.php/about">About</a></li>
-          <li><a href="https://www.airmaxcm.com/wireless/index.php/view-plans">View Packages</a></li>
-          <li><a href="https://www.airmaxcm.com/wireless/index.php/support-tools/terms-conditions">TERMS and CONDITIONS</a></li> -->
         </ul>
       </nav>
     </header>
@@ -116,15 +112,15 @@
         <div class="footer-section">
           <?php
             $email = $config['FOOTER_EMAIL'];
-            if(empty($email))$email = 'airmaxhelpdesk@gmail.com';
+            if(empty($email))$email = 'example@gmail.com';
             $phone = $config['FOOTER_PHONE'];
-            if(empty($phone))$phone = '1-866-449-8651 / 928-565-6707';
+            if(empty($phone))$phone = '1-234-567-8901 / 123-456-7890';
             $company = $config['FOOTER_COMPANY'];
-            if(empty($company))$company = '© 2014 - 2024 Airmax Internet.';
-          ?>
-          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"><?php
+            if(empty($company))$company = '© 2014 - 2024 example Company.';
             $service_time = $config['FOOTER_SERVICE_TIME'];
-            if(empty($service_time))$service_time = ' Mon Fri 9am 6pm';?>
+            if(empty($service_time))$service_time = ' Mon Fri 9am 6pm';
+          ?>
+          <p><span class="bi bi-phone-fill"> : <?php echo $phone; ?></span>&nbsp&nbsp<span class="bi bi-envelope-open-heart"> : <?php echo $email; ?></span>&nbsp&nbsp<span class="bi bi-clock"><?php echo $service_time; ?>
             </span>
           </p>
           <p><?php echo $company; ?></p>

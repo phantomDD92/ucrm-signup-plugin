@@ -1034,46 +1034,54 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
     // defaultCountry : null, // Set defaultCountry to the default value
 
     init: function init() {
+      var _this = this;
+
       this._super.apply(this, arguments);
       this.model.client.countryId = 249;
-      this.model.client.stateId = null;
-      // this.get('ajax').post(ENV.APP.host, {
-      //   data: {
-      //     frontendKey: ENV.APP.frontendKey,
-      //     api: {
-      //       type: 'GET',
-      //       endpoint: 'countries/states',
-      //       data: {countryId: this.get('model.client.countryId')}
-      //     }
-      //   }
-      // }).then((response) => {
-      //   console.log('response', response);
-      //   this.set('states', response);
-      // });
+      this.model.client.stateId = 0;
+
+      this.get('ajax').post(_environment.default.APP.host, {
+        data: {
+          frontendKey: _environment.default.APP.frontendKey,
+          api: {
+            type: 'GET',
+            endpoint: 'countries/states',
+            data: { countryId: 300 }
+          }
+        }
+      }).then(function (response) {
+        var country = { id: Number(response.countryId), name: response.countryName, code: response.countryCode };
+        _this.set("model.client.countryId", country.id);
+        _this.set("selectedCountry", country);
+        _this.set("defaultCountry", country);
+
+        var state = { "id": Number(response.stateId), "countryId": Number(response.countryId), "name": response.stateName, "code": response.stateCode };
+        _this.set("model.client.stateId", state.id);
+        _this.set("selectedState", state);
+        // console.log('response', response);
+        // this.set('states', response);
+      });
       // const test = [{ id: 265, name: 'Zimbabwe', code: 'ZW' },
       //   { id: 31, name: '\u00c5land Islands', code: 'AX' }];
       // this.set('states', test);
     },
 
     states: Ember.computed("model.client.countryId", function () {
-      // if (
-      //   this.get("model.client.countryId") == 249 ||
-      //   this.get("model.client.countryId") == 54
-      // ) {
-      return this.get("ajax").post(_environment.default.APP.host, {
-        data: {
-          frontendKey: _environment.default.APP.frontendKey,
-          api: {
-            type: "GET",
-            endpoint: "countries/states",
-            data: { countryId: this.get("model.client.countryId") }
+      if (this.get("model.client.countryId") == 249 || this.get("model.client.countryId") == 54) {
+        return this.get("ajax").post(_environment.default.APP.host, {
+          data: {
+            frontendKey: _environment.default.APP.frontendKey,
+            api: {
+              type: "GET",
+              endpoint: "countries/states",
+              data: { countryId: this.get("model.client.countryId") }
+            }
           }
-        }
-      });
-      // } else {
-      //   // this.set('model.client.stateId', null);
-      //   return false;
-      // }
+        });
+      } else {
+        // this.set('model.client.stateId', null);
+        return false;
+      }
     }),
     defaultCountry: Ember.computed("model.countries", function () {
       // Retrieve the default country object based on its name
@@ -1097,14 +1105,20 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
         this.set("selectedCountry", country);
         this.set("defaultCountry", country);
 
-        this.set("model.client.stateId", null);
-        this.set("selectedState", null);
+        if (country.id == 249 || country.id == 54) {
+          this.set("model.client.stateId", null);
+          this.set("selectedState", null);
+        } else {
+          var state = { "id": 0, "countryId": country.id, "name": "", "code": "" };
+          this.set("model.client.stateId", state.id);
+          this.set("selectedState", state);
+        }
       },
       selectState: function selectState(state) {
         this.set("model.client.stateId", state.id);
         this.set("selectedState", state);
 
-        // if (state.id == 249 || state.id == 54) {
+        if (state.id == 249 || state.id == 54) {
           return this.get("ajax").post(_environment.default.APP.host, {
             data: {
               frontendKey: _environment.default.APP.frontendKey,
@@ -1115,26 +1129,25 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
               }
             }
           });
-        // }
-        // else {
-        //   this.set('model.client.stateId', null);
-        //   return false;
-        // }
+        } else {
+          // this.set('model.client.stateId', null);
+          return false;
+        }
       },
       submit: function submit(client) {
-        var _this = this;
+        var _this2 = this;
 
         client.validate().then(function (_ref) {
           var validations = _ref.validations;
 
-          _this.set("pending", true);
-          _this.set("processing", true);
-          _this.set("failure", false);
+          _this2.set("pending", true);
+          _this2.set("processing", true);
+          _this2.set("failure", false);
 
           var $isLead = _environment.default.APP.isLead === "no" ? false : true;
 
           if (validations.get("isValid")) {
-            _this.get("ajax").post(_environment.default.APP.host, {
+            _this2.get("ajax").post(_environment.default.APP.host, {
               headers: {
                 "Content-Type": "application/json"
               },
@@ -1146,19 +1159,19 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
                   data: {
                     clientType: 1,
                     isLead: $isLead,
-                    firstName: _this.get("model.client.firstName"),
-                    lastName: _this.get("model.client.lastName"),
-                    street1: _this.get("model.client.street1"),
-                    street2: _this.get("model.client.street2"),
-                    city: _this.get("model.client.city"),
-                    countryId: _this.get("model.client.countryId"),
-                    stateId: _this.get("model.client.stateId"),
-                    zipCode: _this.get("model.client.zipCode"),
-                    username: _this.get("model.client.email"),
+                    firstName: _this2.get("model.client.firstName"),
+                    lastName: _this2.get("model.client.lastName"),
+                    street1: _this2.get("model.client.street1"),
+                    street2: _this2.get("model.client.street2"),
+                    city: _this2.get("model.client.city"),
+                    countryId: _this2.get("model.client.countryId"),
+                    stateId: _this2.get("model.client.stateId"),
+                    zipCode: _this2.get("model.client.zipCode"),
+                    username: _this2.get("model.client.email"),
                     contacts: [{
-                      email: _this.get("model.client.email"),
-                      phone: _this.get("model.client.phone"),
-                      name: _this.get("model.client.firstName") + " " + _this.get("model.client.lastName")
+                      email: _this2.get("model.client.email"),
+                      phone: _this2.get("model.client.phone"),
+                      name: _this2.get("model.client.firstName") + " " + _this2.get("model.client.lastName")
                     }]
                     // "attributes": [
                     //   {
@@ -1172,23 +1185,23 @@ define("ucrm-client-signup-form/components/user-details", ["exports", "ucrm-clie
             }).catch(function (resp) {
               if (resp.payload !== undefined && resp.payload !== null) {
                 if (resp.payload.redirect === true) {
-                  _this.set("failure", false);
+                  _this2.set("failure", false);
                   // this.transitionToRoute('signup.account', { queryParams: { expired: true }});
-                  _this.get("changeRoute")("signup.account");
+                  _this2.get("changeRoute")("signup.account");
                 } else {
-                  _this.set("errors", resp.payload.errors);
+                  _this2.set("errors", resp.payload.errors);
                 }
               }
-              _this.set("pending", false);
-              _this.set("failure", true);
+              _this2.set("pending", false);
+              _this2.set("failure", true);
             }).then(function () {
-              if (_this.get("failure") !== true) {
-                _this.get("changeRoute")("signup.complete");
+              if (_this2.get("failure") !== true) {
+                _this2.get("changeRoute")("signup.complete");
               }
-              _this.set("pending", false);
+              _this2.set("pending", false);
             });
 
-            _this.set("processing", false);
+            _this2.set("processing", false);
           }
         });
       }

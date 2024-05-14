@@ -74,6 +74,28 @@ class Interpreter
     public function get($endpoint, $data)
     {
         if (self::validateGet($endpoint)) {
+            if($endpoint === 'countries/states' && $data['countryId']===300) {
+                $config=$GLOBALS['config'];
+                $config['FORM_DEFAULT_COUNTRY_STATE'];
+                $temp_array = explode(",",$config['FORM_DEFAULT_COUNTRY_STATE']);
+                if(count($temp_array) < 4 ){
+                    $temp_array[3]=1;
+                    $temp_array[4]="";
+                    $temp_array[5]="";
+                }
+                return array(
+                    "countryId" => $temp_array[0],
+                    "countryName" => $temp_array[1],
+                    "countryCode" => $temp_array[2],
+                    "stateId" => $temp_array[3],
+                    "stateName" => $temp_array[4],
+                    "stateCode" => $temp_array[5]
+                );               
+            }
+
+            // if($endpoint === 'countries/states' && !($data['countryId']===249 ||$data['countryId']===54)) {
+            //     return [];
+            // }       
             return $this->api->get(
                 $endpoint,
                 $data
@@ -115,6 +137,14 @@ class Interpreter
                         ];
                     }
 
+                    $mailerhost = $config['MAILER_HOST'];
+                    if(empty($mailerhost))$mailerhost = 'smtp.gmail.com';
+                    $mailerport = $config['MAILER_PORT'];
+                    if(empty($mailerport))$mailerport = 587;
+                    $username = $config['MAILER_USERNAME'];
+                    if(empty($username))$username = 'you_mailname@gmail.com';
+                    $password = $config['MAILER_PASSWORD'];
+                    if(empty($password))$password = '1234 5678 abcd efgh';
                     $mailer->Host = $mailerhost;
                     $mailer->SMTPAuth = true;
                     //$mailer->Username = 'airmaxbilling@gmail.com';
@@ -124,11 +154,11 @@ class Interpreter
                     $mailer->Port = $mailerport;
 
                     //$mailer->setFrom($config['EMAIL'], 'New Signup');
-                    $mailtitle = $config['MAILTITLE'];
-                    if(empty($mailtitle))$mailtitle = 'New Signup';
+                    $mailtitle = $config['MAILER_TITLE'];
+                    if(empty($mailtitle))$mailtitle = 'Example Mail Title';
                     $mailer->setFrom($username, $mailtitle);
-                    $tomail = $config['RECEIVEREMAIL'];
-                    if(empty($tomail))$tomail = 'airmaxhelpdesk@gmail.com';
+                    $tomail = $config['RECEIVER_EMAIL'];
+                    if(empty($tomail))$tomail = 'tomail@gmail.com';
                     $mailer->addAddress($tomail, $tomail);
                     //$mailer->addAddress('airmaxhelpdesk@gmail.com', 'airmaxhelpdesk@gmail.com');
 
